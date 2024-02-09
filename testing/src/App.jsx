@@ -20,7 +20,7 @@ const App = () => {
       .getAll()
       .then(initialNotes => {
         setNotes(initialNotes)
-        console.log('NOTESSS', initialNotes)
+        console.log("NOTESSS", initialNotes)
       })
   }, [])
 

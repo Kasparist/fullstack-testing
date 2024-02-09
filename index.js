@@ -46,14 +46,6 @@ app.get('/api/notes', (request, response) => {
     response.json(notes)
 })
 
-app.post('/api/notes', (request, response) => {
-    const note = request.body
-    let id = Math.floor(Math.random() * 96) + 5
-    note.id = id
-    console.log(note)
-    response.json(note)
-})
-
 app.get('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id)
     const note = notes.find(note => note.id === id)
@@ -66,6 +58,23 @@ app.get('/api/notes/:id', (request, response) => {
     }
 })
 
+app.post('/api/notes', (request, response) => {
+    const note = request.body
+    let id = Math.floor(Math.random() * 96) + 5
+    note.id = id
+
+    if (!note.content) {
+        return response.status(400).json({
+            error: 'content missing'
+        })
+    }
+
+    console.log(note)
+    response.json(note)
+
+})
+
+
 app.delete('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id)
     notes = notes.filter(note => note.id !== id)
@@ -73,9 +82,9 @@ app.delete('/api/notes/:id', (request, response) => {
     response.status(204).end()
 })
 
-app.put('/api/persons/:id', async (req, res, next) => {
-    const person = { id: req.params.id, name: req.body.name, number: req.body.number }
-    res.json(person)
+app.put('/api/notes/:id', async (req, res, next) => {
+    const note = { id: req.params.id, name: req.body.content, number: req.body.important }
+    res.json(note)
     next()
 })
 
