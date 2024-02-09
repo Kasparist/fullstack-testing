@@ -3,6 +3,6 @@ POST https://part3-testing-fullstack.onrender.com/api/notes
 Content-Type: application/json
 
 {
-    "content": "Monsters are delicious in dungeon",
+    "content": "Delicious in dungeon",
     "important": 
 }

@@ -6,7 +6,10 @@ import Footer from './components/Footer'
 
 
 const App = () => {
-  const [notes, setNotes] = useState([])
+  const [notes, setNotes] = useState([{
+    content: 'Delicious in dungeon',
+     important: true
+  }])
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -17,6 +20,7 @@ const App = () => {
       .getAll()
       .then(initialNotes => {
         setNotes(initialNotes)
+        console.log('NOTESSS', initialNotes)
       })
   }, [])
 
@@ -32,6 +36,7 @@ const App = () => {
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
         setNewNote('')
+        console.log('POSTING...')
       })
   }
 
@@ -52,6 +57,7 @@ const App = () => {
       .update(id, changedNote)
       .then(returnedNote => {
         setNotes(notes.map(note => note.id !== id ? note : returnedNote))
+        console.log('UPDATING...')
       })
       .catch(error => {
         setErrorMessage(

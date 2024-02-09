@@ -48,6 +48,8 @@ app.get('/api/notes', (request, response) => {
 
 app.post('/api/notes', (request, response) => {
     const note = request.body
+    let id = Math.floor(Math.random() * 96) + 5
+    note.id = id
     console.log(note)
     response.json(note)
 })
@@ -69,6 +71,12 @@ app.delete('/api/notes/:id', (request, response) => {
     notes = notes.filter(note => note.id !== id)
 
     response.status(204).end()
+})
+
+app.put('/api/persons/:id', async (req, res, next) => {
+    const person = { id: req.params.id, name: req.body.name, number: req.body.number }
+    res.json(person)
+    next()
 })
 
 
