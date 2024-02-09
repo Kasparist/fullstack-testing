@@ -20,7 +20,7 @@ const App = () => {
       .getAll()
       .then(initialNotes => {
         setNotes(initialNotes)
-        console.log("NOTESSS", initialNotes)
+        console.log(initialNotes, "NOTESSS")
       })
   }, [])
 
@@ -36,7 +36,7 @@ const App = () => {
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
         setNewNote('')
-        console.log('POSTING...')
+        console.log('POSTING...', returnedNote)
       })
   }
 

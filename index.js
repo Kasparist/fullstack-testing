@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
+
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
     console.log('Path: ', request.path)
@@ -69,6 +70,8 @@ app.post('/api/notes', (request, response) => {
         })
     }
 
+    notes = notes.concat(note)
+
     console.log(note)
     response.json(note)
 
@@ -82,11 +85,7 @@ app.delete('/api/notes/:id', (request, response) => {
     response.status(204).end()
 })
 
-app.put('/api/notes/:id', async (req, res, next) => {
-    const note = { id: req.params.id, name: req.body.content, number: req.body.important }
-    res.json(note)
-    next()
-})
+
 
 
 app.use(unknownEndpoint)
