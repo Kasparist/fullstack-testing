@@ -85,7 +85,11 @@ app.delete('/api/notes/:id', (request, response) => {
     response.status(204).end()
 })
 
-
+app.put('/api/notes/:id', async (req, res, next) => {
+    const note = { id: req.params.id, content: req.body.content, important: req.body.important }
+    res.json(note)
+    next()
+})
 
 
 app.use(unknownEndpoint)
