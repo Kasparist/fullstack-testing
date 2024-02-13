@@ -5,3 +5,13 @@ Content-Type: application/json
     "content": "Monsters are delicious in dungeon",
     "important": "true"
 }
+
+###
+
+POST https://part3-testing-fullstack.onrender.com/api/notes
+Content-Type: application/json
+
+{
+    "content": "Singing in the shower",
+    "important": false
+}

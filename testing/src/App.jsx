@@ -6,10 +6,7 @@ import Footer from './components/Footer'
 
 
 const App = () => {
-  const [notes, setNotes] = useState([{
-    content: 'Delicious in dungeon',
-     important: true
-  }])
+  const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
